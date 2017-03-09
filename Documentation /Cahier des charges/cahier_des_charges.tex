@@ -1,0 +1,41 @@
+\documentclass{report}
+
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title{Cahier des charges pour le projet de traitement d'image}
+\author{Aur\'elie \bsc{Debrot} et Nicolas \bsc{Sommer}}
+\date{9 Mars 2017}
+
+
+\begin{document}
+\maketitle
+
+\chapter{Cahier des charges}
+\section{Introduction}
+L'objectif de ce projet est de créer un programme capable de reconnaitre les caractères
+\'ecrit sur un panneau indicatif de nom de ville Suisse.
+
+\paragraph
+~
+Ce programme permettra de charger une image contenant un panneau de ville Suisse
+et de directement lancer une recherche sur cette ville avec le moteur de recherche
+Google. On obtiendra ainsi un outils permettant de rapidement faire des recherches
+\`a partir de nos photos de vacances par exemple.
+
+\paragraph
+~
+Ce projet sera r\'ealis\'e en python et OpenCV. Certaines fonctionnalit\'e pourront
+utiliser d'autres outils apr\`es la phase de documentation.
+
+\section{Fonctionnalités}
+Ce projet aura comme fonctionnalit\'e:
+
+\begin{itemize}
+\item Charger des images
+\item Reconnaitre un panneau sur l'image
+\item Reconstruire une chaine de caractère avec les lettres contenu dans le panneau
+\item Effectuer une recherche Google sur la ville en question
+\end{itemize}
+\end{document}
