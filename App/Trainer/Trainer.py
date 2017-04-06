@@ -9,7 +9,7 @@ import numpy as np
 MIN_CONTOUR_AREA = 100
 RESIZED_IMG_W = 20
 RESIZED_IMG_H = 30
-TRAININGFILE = "../../Images/TrainingCaractere/training_image_new2.jpg"
+TRAININGFILE = "../../Images/TrainingCaractere/training_image_new3.jpg"
 
 class WindowManager:
     """Manage les fenetres de l'application"""
@@ -92,7 +92,7 @@ class Datagenerator:
         print("Training complete !!")
 
         np.savetxt("classification.txt", npa_classifications)
-        np.savetxt("flattened", npa_flattened_images)
+        np.savetxt("flattened.txt", npa_flattened_images)
         cv2.destroyAllWindows()
         return
 
