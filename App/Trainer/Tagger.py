@@ -6,10 +6,10 @@ import cv2
 import numpy as np
 
 
-MIN_CONTOUR_AREA = 1
+MIN_CONTOUR_AREA = 50
 RESIZED_IMG_W = 20
 RESIZED_IMG_H = 30
-TRAININGFILE = "../../Images/TrainingCaractere/a_b.jpg"
+TRAININGFILE = "../../Images/TrainingCaractere/tim3.jpg"
 
 class WindowManager:
     """Manage les fenetres de l'application"""
@@ -75,8 +75,6 @@ class Datagenerator:
                 img_roi = img_thresh[int_y:int_y+int_h, int_x:int_x+int_w]
                 img_roi_resized = cv2.resize(img_roi, (RESIZED_IMG_W, RESIZED_IMG_H))
 
-                self.w_m.generate_window(img_roi)
-                self.w_m.generate_window(img_roi_resized)
                 self.w_m.generate_window(self.img_training)
 
                 int_char = cv2.waitKey(0)
