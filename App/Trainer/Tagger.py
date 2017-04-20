@@ -6,10 +6,10 @@ import cv2
 import numpy as np
 
 
-MIN_CONTOUR_AREA = 100
+MIN_CONTOUR_AREA = 1
 RESIZED_IMG_W = 20
 RESIZED_IMG_H = 30
-TRAININGFILE = "../../Images/TrainingCaractere/training_image_new3.jpg"
+TRAININGFILE = "../../Images/TrainingCaractere/a_b.jpg"
 
 class WindowManager:
     """Manage les fenetres de l'application"""
@@ -20,8 +20,7 @@ class WindowManager:
     def generate_window(self, img):
         """Genere la fenetre et la gere"""
         cv2.imshow(self.name, img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+
 
 
 class Datagenerator:
