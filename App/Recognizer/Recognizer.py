@@ -37,4 +37,4 @@ class PossiblePlate:
         self.strChars=""
 
 #Main method
-if __name__ == "__main__":
+#if __name__ == "__main__":

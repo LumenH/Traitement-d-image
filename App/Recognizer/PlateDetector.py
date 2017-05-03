@@ -3,11 +3,11 @@ import numpy as np
 import math
 import Main
 import random
+import os
 
 import Preprocess
 import CharDetector
-import PossibleChar
-import PossiblePlate
+import Recognizer
 
 #A changer sans doute
 PLATE_WIDTH_PADDING = 1.3
@@ -47,25 +47,23 @@ def detectPlatesInScene(imgOriginalScene):
 
         cv2.drawContours(imgContours, contours, -1, Main.SCALAR_WHITE)
         cv2.imshow("2b", imgContours)
+        listOfListsOfMatchingCharsInScene = CharDetector.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
 
-
-     listOfListsOfMatchingCharsInScene = CharDetector.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
-
-     if Main.showSteps == True:
+    if Main.showSteps == True:
          #print "step 3 - listOfListsOfMatchingCharsInScene.Count = " + str(len(listOfListsOfMatchingCharsInScene))
-         imgContours = np.zeros((height, width, 3), np.uint8)
+        imgContours = np.zeros((height, width, 3), np.uint8)
 
          #Begin for
-         for listOfMatchingChars in listOfListsOfMatchingCharsInScene:
-             intRandomBlue = random.randint(0, 255)
-             intRandomGreen = random.randint(0, 255)
-             intRandomRed = random.randint(0, 255)
+        for listOfMatchingChars in listOfListsOfMatchingCharsInScene:
+            intRandomBlue = random.randint(0, 255)
+            intRandomGreen = random.randint(0, 255)
+            intRandomRed = random.randint(0, 255)
 
-             contous = []
+            contous = []
 
-             #Begin for
-             for matchingChar in listOfMatchingChars:
-                 contours.append(matchingChar.contour)
+            #Begin for
+            for matchingChar in listOfMatchingChars:
+                contours.append(matchingChar.contour)
             #End for
 
             cv2.drawContours(imgContours, contours, -1, (intRandomBlue, intRandomGreen, intRandomRed))

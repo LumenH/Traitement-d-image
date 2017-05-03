@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import math
 import random
+import os
 
 from Recognizer import PossibleChar
 import Preprocess
@@ -19,20 +20,21 @@ MAX_ASPECT_RATIO = 1.0
 
 MIN_NUMBER_OF_MATCHING_CHARS = 3
 
-MAX_DIAG_SIZE_MULTIPLE_AWAY
-MAX_ANGLE_BETWEEN_CHARS
-MAX_CHANGE_IN_AREA
-MAX_CHANGE_IN_WIDTH
-MAX_CHANGE_IN_HEIGHT
+MAX_DIAG_SIZE_MULTIPLE_AWAY = 25
+MAX_ANGLE_BETWEEN_CHARS = 360
+MAX_CHANGE_IN_AREA = 50
+MAX_CHANGE_IN_WIDTH = 10
+MAX_CHANGE_IN_HEIGHT = 10
 
 
 '''This function load the data'''
 def loadKNNDataAndTrainKNN():
+    print("Start KNN")
     allContoursWithData = []
     validContoursWithData = []
 
     try:
-        npaClassifications = np.loadtxt("classification.txt", np.float32) #adapter le nom du fichier
+        npaClassifications = np.loadtxt("classification.txt", np.float32)
 
     except:
         print("Error, unable to open the file, exiting program\n")
@@ -104,7 +106,7 @@ def detectCharsinPlate(listOfPossiblePlates):
 
         if(len(listOfListsOfMatchingCharsInPlate) == 0):
             if Main.showSteps == True:
-                print()"chars found in plate number " + str(intPlateCounter) + " = (none), click on any image and press a key to continue . . .")
+                print("Chars found in plate number " + str(intPlateCounter) + " = (none), click on any image and press a key to continue . . .")
                 intPlateCounter = intPlateCounter + 1
                 cv2.destroyWindow("8")
                 cv2.destroyWindow("9")
