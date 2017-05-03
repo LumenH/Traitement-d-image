@@ -6,8 +6,8 @@ import random
 
 import Preprocess
 import CharDetector
-import PossibleChar
-import PossiblePlate
+from Recognizer import PossibleChar
+from Recognizer import PossiblePlate
 
 #A changer sans doute
 PLATE_WIDTH_PADDING = 1.3
@@ -21,7 +21,7 @@ def detectPlatesInScene(imgOriginalScene):
     imgThreshScene = np.zeros((height, width, 1), np.uint8)
     imgContours = np.zeros((height, width, 3), np.uint8)
 
-    cv2.destroyAllWindow()
+    cv2.destroyAllWindows()
 
     if Main.showSteps == True:
         cv2.imshow("0", imgOriginalScene)
@@ -49,23 +49,23 @@ def detectPlatesInScene(imgOriginalScene):
         cv2.imshow("2b", imgContours)
 
 
-     listOfListsOfMatchingCharsInScene = CharDetector.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
+    listOfListsOfMatchingCharsInScene = CharDetector.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
 
-     if Main.showSteps == True:
-         #print "step 3 - listOfListsOfMatchingCharsInScene.Count = " + str(len(listOfListsOfMatchingCharsInScene))
-         imgContours = np.zeros((height, width, 3), np.uint8)
+    if Main.showSteps == True:
+        #print "step 3 - listOfListsOfMatchingCharsInScene.Count = " + str(len(listOfListsOfMatchingCharsInScene))
+        imgContours = np.zeros((height, width, 3), np.uint8)
 
-         #Begin for
-         for listOfMatchingChars in listOfListsOfMatchingCharsInScene:
-             intRandomBlue = random.randint(0, 255)
-             intRandomGreen = random.randint(0, 255)
-             intRandomRed = random.randint(0, 255)
+        #Begin for
+        for listOfMatchingChars in listOfListsOfMatchingCharsInScene:
+            intRandomBlue = random.randint(0, 255)
+            intRandomGreen = random.randint(0, 255)
+            intRandomRed = random.randint(0, 255)
 
-             contous = []
+            contours = []
 
-             #Begin for
-             for matchingChar in listOfMatchingChars:
-                 contours.append(matchingChar.contour)
+            #Begin for
+            for matchingChar in listOfMatchingChars:
+                contours.append(matchingChar.contour)
             #End for
 
             cv2.drawContours(imgContours, contours, -1, (intRandomBlue, intRandomGreen, intRandomRed))
@@ -114,10 +114,10 @@ def findPossibleCharsInScene(imgThresh):
     imgThreshCopy = imgThresh.copy()
     imgContours, contours, npaHierarchy = cv2.findContours(imgThreshCopy, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     height, width = imgThresh.shape
-    imgContours = np.zeros((height, width, 3), np.unint8)
+    imgContours = np.zeros((height, width, 3), np.uint8)
 
     #Begin for
-    for i in range(o, len(contours)):
+    for i in range(0, len(contours)):
         if Main.showSteps == True:
             cv2.drawContours(imgContours, contours, i, Main.SCALAR_WHITE)
 

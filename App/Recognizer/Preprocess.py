@@ -11,7 +11,7 @@ def preprocess(imgOriginal):
     imgGrayscale = extractValue(imgOriginal)
     imgMaxContrastGrayscale = maximizeContrast(imgGrayscale)
 
-    heigth, width = imgGrayscale.shape
+    height, width = imgGrayscale.shape
 
     imgBlurred = np.zeros((height, width, 1), np.uint8)
     imgBlurred = cv2.GaussianBlur(imgMaxContrastGrayscale, GAUSSIAN_SMOOTH_FILTER_SIZE, 0)
@@ -22,7 +22,7 @@ def preprocess(imgOriginal):
 
 def extractValue(imgOriginal):
 
-    height, width = imgGrayscale.shape
+    height, width, numChannels = imgOriginal.shape
 
     imgHSV = np.zeros((height, width, 3), np.uint8)
     imgHSV = cv2.cvtColor(imgOriginal, cv2.COLOR_BGR2HSV)
@@ -44,6 +44,6 @@ def maximizeContrast(imgGrayscale):
     imgBlackHat = cv2.morphologyEx(imgGrayscale, cv2.MORPH_BLACKHAT, structuringElement)
 
     imgGrayscalePlusTopHat = cv2.add(imgGrayscale, imgTopHat)
-    imgGrayscalePlusTopHatMinusBlackHat = cv2.substract(imgGrayscalePlusTopHat, imgBlackHat)
+    imgGrayscalePlusTopHatMinusBlackHat = cv2.subtract(imgGrayscalePlusTopHat, imgBlackHat)
 
     return imgGrayscalePlusTopHatMinusBlackHat

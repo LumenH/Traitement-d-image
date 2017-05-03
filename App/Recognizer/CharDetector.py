@@ -19,11 +19,11 @@ MAX_ASPECT_RATIO = 1.0
 
 MIN_NUMBER_OF_MATCHING_CHARS = 3
 
-MAX_DIAG_SIZE_MULTIPLE_AWAY
-MAX_ANGLE_BETWEEN_CHARS
-MAX_CHANGE_IN_AREA
-MAX_CHANGE_IN_WIDTH
-MAX_CHANGE_IN_HEIGHT
+MAX_DIAG_SIZE_MULTIPLE_AWAY = 5.0
+MAX_ANGLE_BETWEEN_CHARS = 12.0
+MAX_CHANGE_IN_AREA = 0.5
+MAX_CHANGE_IN_WIDTH = 0.8
+MAX_CHANGE_IN_HEIGHT = 0.2
 
 
 '''This function load the data'''
@@ -40,14 +40,14 @@ def loadKNNDataAndTrainKNN():
         return False
 
     try:
-        npaFlattenedImages = np.loadtxt("flattened_images.txt", np.float32) #changer le nom de fichier
+        npaFlattenedImages = np.loadtxt("flattened.txt", np.float32) #changer le nom de fichier
 
     except:
         print("Error, unable to open file, exiting program\n")
         os.system("pause")
         return False
 
-    npaClassifications = npaClassifications.reshape((npaClassifications, 1))
+    npaClassifications = npaClassifications.reshape((npaClassifications.size, 1))
     KNearest.setDefaultK(1)
     KNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE , npaClassifications)
 
@@ -104,7 +104,7 @@ def detectCharsinPlate(listOfPossiblePlates):
 
         if(len(listOfListsOfMatchingCharsInPlate) == 0):
             if Main.showSteps == True:
-                print()"chars found in plate number " + str(intPlateCounter) + " = (none), click on any image and press a key to continue . . .")
+                print("chars found in plate number " + str(intPlateCounter) + " = (none), click on any image and press a key to continue . . .")
                 intPlateCounter = intPlateCounter + 1
                 cv2.destroyWindow("8")
                 cv2.destroyWindow("9")

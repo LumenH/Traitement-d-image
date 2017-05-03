@@ -4,11 +4,11 @@ import os
 
 import CharDetector
 import PlateDetector
-import PossiblePlate
+from Recognizer import PossiblePlate
 
 SCALAR_BLACK = (0.0, 0.0, 0.0)
 SCALAR_WHITE = (255.0, 255.0, 255.0)
-SCALAR_YELLOW = (0.0, 255.0, 255.0
+SCALAR_YELLOW = (0.0, 255.0, 255.0)
 SCALAR_GREEN = (0.0, 255.0, 0.0)
 SCALAR_RED = (0.0, 0.0, 255.0)
 
