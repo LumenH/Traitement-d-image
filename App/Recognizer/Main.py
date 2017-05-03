@@ -4,11 +4,7 @@ import os
 
 import CharDetector
 import PlateDetector
-<<<<<<< HEAD
 import Recognizer
-=======
-from Recognizer import PossiblePlate
->>>>>>> f9edd0ed77fda6bda302d80789c30f8a660e8239
 
 SCALAR_BLACK = (0.0, 0.0, 0.0)
 SCALAR_WHITE = (255.0, 255.0, 255.0)

@@ -41,7 +41,7 @@ def loadKNNDataAndTrainKNN():
         return False
 
     try:
-        npaFlattenedImages = np.loadtxt("flattened_images.txt", np.float32) #changer le nom de fichier
+        npaFlattenedImages = np.loadtxt("flattened.txt", np.float32) #changer le nom de fichier
 
     except:
         print("Error, unable to open file, exiting program\n")
