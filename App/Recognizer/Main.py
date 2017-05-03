@@ -21,7 +21,7 @@ def main():
         print("\nError : KNN training was not successful")
         return
 
-    imgOriginalScene = cv2.imread()#Ouvrir l'image à tester
+    imgOriginalScene = cv2.imread("1.jpg")#Ouvrir l'image à tester
 
     if imgOriginalScene is None:
         print("\nError : image notre read from file")
