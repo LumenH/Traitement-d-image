@@ -3,7 +3,6 @@ import numpy as np
 import math
 import Main
 import random
-import os
 
 import Preprocess
 import CharDetector

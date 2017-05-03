@@ -29,7 +29,6 @@ MAX_CHANGE_IN_HEIGHT = 10
 
 '''This function load the data'''
 def loadKNNDataAndTrainKNN():
-    print("Start KNN")
     allContoursWithData = []
     validContoursWithData = []
 
