@@ -20,7 +20,7 @@ def detectPlatesInScene(imgOriginalScene):
     imgThreshScene = np.zeros((height, width, 1), np.uint8)
     imgContours = np.zeros((height, width, 3), np.uint8)
 
-    cv2.destroyAllWindow()
+    cv2.destroyAllWindows()
 
     if Main.showSteps == True:
         cv2.imshow("0", imgOriginalScene)
@@ -111,14 +111,14 @@ def findPossibleCharsInScene(imgThresh):
     imgThreshCopy = imgThresh.copy()
     imgContours, contours, npaHierarchy = cv2.findContours(imgThreshCopy, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     height, width = imgThresh.shape
-    imgContours = np.zeros((height, width, 3), np.unint8)
+    imgContours = np.zeros((height, width, 3), np.uint8)
 
     #Begin for
-    for i in range(o, len(contours)):
+    for i in range(0, len(contours)):
         if Main.showSteps == True:
             cv2.drawContours(imgContours, contours, i, Main.SCALAR_WHITE)
 
-        possibleChar = PossibleChar.PossibleChar(contours[i])
+        possibleChar = Recognizer.PossibleChar(contours[i])
 
         if CharDetector.checkIfPossibleChar(possibleChar):
             intCountOfPossibleChars = intCountOfPossibleChars + 1

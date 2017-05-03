@@ -48,9 +48,9 @@ def loadKNNDataAndTrainKNN():
         os.system("pause")
         return False
 
-    npaClassifications = npaClassifications.reshape((npaClassifications, 1))
+    npaClassifications = npaClassifications.reshape((npaClassifications.size, 1))
     KNearest.setDefaultK(1)
-    KNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE , npaClassifications)
+    KNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
 
     return True
 

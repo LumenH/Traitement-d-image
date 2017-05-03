@@ -24,7 +24,7 @@ class PossibleChar:
         self.intCenterY = (self.intBoundingRectY + self.intBoundingRectY + self.intBoundingRectHeight) / 2
 
         self.fltDiagonalSize = math.sqrt((self.intBoundingRectWidth ** 2) + (self.intBoundingRectHeight ** 2))
-        self.fltAspectRatio = float(self.intBoundingRectWidth) / float(slef.intBoundingRectHeight)
+        self.fltAspectRatio = float(self.intBoundingRectWidth) / float(self.intBoundingRectHeight)
 
 '''Class for the plate'''
 class PossiblePlate:
