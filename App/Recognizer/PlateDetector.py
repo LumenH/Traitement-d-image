@@ -49,7 +49,7 @@ def detectPlatesInScene(imgOriginalScene):
         cv2.imshow("2b", imgContours)
 
 
-     listOfListsOfMatchingCharsInScene = DetectChars.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
+     listOfListsOfMatchingCharsInScene = CharDetector.findListOfListOfMatchingChars(listOfPossibleCharsInScene)
 
      if Main.showSteps == True:
          #print "step 3 - listOfListsOfMatchingCharsInScene.Count = " + str(len(listOfListsOfMatchingCharsInScene))
@@ -123,7 +123,7 @@ def findPossibleCharsInScene(imgThresh):
 
         possibleChar = PossibleChar.PossibleChar(contours[i])
 
-        if DetectChars.checkIfPossibleChar(possibleChar):
+        if CharDetector.checkIfPossibleChar(possibleChar):
             intCountOfPossibleChars = intCountOfPossibleChars + 1
             listOfPossibleChars.append(possibleChar)
     #End for
@@ -159,7 +159,7 @@ def extractPlate(imgOriginal, listOfMatchingChars):
     intPlateHeight = int(fltAverageCharHeight * PLATE_HEIGHT_PADDING)
 
     fltOpposite = listOfMatchingChars[len(listOfMatchingChars) - 1].intCenterY - listOfMatchingChars[0].intCenterY
-    fltHypotenuse = DetectChars.distanceBetweenChars(listOfMatchingChars[0], listOfMatchingChars[len(listOfMatchingChars) - 1])
+    fltHypotenuse = CharDetector.distanceBetweenChars(listOfMatchingChars[0], listOfMatchingChars[len(listOfMatchingChars) - 1])
     fltCorrectionAngleInRad = math.asin(fltOpposite / fltHypotenuse)
     fltCorrectionAngleInDeg = fltCorrectionAngleInRad * (180.0 / math.pi)
 
